@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点击换图案例</title>
+
+</head>
+<body>
+    <img src="../img/1.png" id="james" onclick="f()">
+    <script>
+        var james1=  document.getElementById('james');
+        var flag=false;
+        james1.onclick=function f() {
+                if(flag ==false){
+                    james1.src="../img/2.png";
+                    flag=true;
+                }
+                else {
+                    james1.src="../img/1.png";
+                    flag=false;
+                }
+        }
+    </script>
+
+
+</body>
+</html>
