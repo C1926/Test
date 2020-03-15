@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图和自动跳转首页</title>
+<!--    <script>-->
+<!--        /*-->
+<!--        *       在页面上展示img标签图片-->
+<!--        *       定义一个方法,修改img图片的src属性-->
+<!--        *       定义一个计时器,每隔3s调用-->
+<!--        * */-->
+<!--        setInterval("f();",1000);-->
+<!--        var num=1;-->
+<!--        function f() {-->
+<!--            num++;-->
+<!--            var elementById = document.getElementById('aa');-->
+<!--            elementById.src="../img/"+num+".png";-->
+<!--            if(num==3)-->
+<!--                num=0;-->
+<!--        }-->
+<!--    </script>-->
+    <style>
+        p{
+            text-align: center;
+        }
+        span{
+         color: red;
+        }
+    </style>
+<!--    <script>-->
+<!--        f();-->
+<!--        function f() {-->
+<!--            var document1 = document.getElementById("num");-->
+<!--            document1.innerHTML="aaa";-->
+<!--         //   location.reload();-->
+<!--        }-->
+<!--    </script>-->
+
+</head>
+<body>
+        <p>
+            <span id="num">5</span>秒后,自动跳转到首页</p>
+        <script>
+            var num=5;
+            var tim= setInterval("f();",1000);
+             function f() {
+                var document1 = document.getElementById("num");
+                document1.innerHTML=document1.innerHTML-1;
+                num--;
+                 if(num==0){
+                     clearInterval(tim);
+                     location.href='http://www.baidu.com';
+                 }
+            }
+        </script>
+</body>
+</html>
