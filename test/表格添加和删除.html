@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态表格</title>
+    <style>
+        .cls{
+            text-align: center;
+            margin: 50px;
+        }
+
+        td{
+            border:1px solid ;
+            cellpadding:"0";
+            width: 10%;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="cls">
+            <input type="text" id="id"  placeholder="请输入编号" >
+            <input type="text" id="name"  placeholder="请输入姓名" >
+            <input type="text" id="sex"   placeholder="请输入性别">
+            <input type="button" id="add" value="添加"  ><br/>
+    </div>
+    <table align='center' id="table">
+        <caption>学生信息表  </caption>
+        <tr>
+                <td>编号</td>
+                <td>姓名</td>
+                <td>性别</td>
+                <td>操作</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>swx</td>
+            <td>女</td>
+            <td><a href="javascript:void(0);" onclick="del(this);">删除</a></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>姓名</td>
+            <td>？</td>
+            <td><a href="javascript:void(0);" onclick="del(this);">删除</a></td>
+        </tr>
+    </table>
+    <script>
+        var document1=document.getElementById("add");
+        var tb=document.getElementById("table");
+        document1.onclick=function f() {
+            var td_id=document.getElementById("id").value;
+            var td_name=document.getElementById("name").value;
+            var td_sex=document.getElementById("sex").value;
+            td1=document.createElement("td");
+            td1.innerHTML=td_id;
+            td2=document.createElement("td");
+            td2.innerHTML=td_name;
+            td3=document.createElement("td");
+            td3.innerHTML=td_sex;
+            td4=document.createElement("td");
+            td4.innerHTML="<a href='javascript:void(0);' onclick='del(this);'>删除</a>";
+            tr=document.createElement("tr");
+            tb.appendChild(tr);
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            tr.appendChild(td3);
+            tr.appendChild(td4);
+        }
+         function del(obj) {
+             var tr = obj.parentNode.parentNode;
+             var table = tr.parentNode;
+             alert(table);
+             table.removeChild(tr);
+        }
+    </script>
+</body>
+</html>
