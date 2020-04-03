@@ -99,7 +99,55 @@
         a:active{
             color: chartreuse;
         }
+        .error{
+            color: red;
+        }
     </style>
+    <script>
+        window.onload=function () {
+            //给表单绑定onsubmit事件
+            var regName=new RegExp("\\w{4,12}")
+            var regWord=/^.{7,20}/;
+            var name=document.getElementById("username");
+            var password=document.getElementById("password");
+            var tipsName=document.getElementById("tipsName");
+            var tipsWord= document.getElementById("tipsWord");
+            name.onblur=checkUsername;
+            password.onblur=checkPassword;
+            document.getElementById("form").onsubmit=function checkout() {
+                return checkUsername() && checkPassword();
+            };
+
+            name.onfocus=function(){
+                tipsName.innerHTML="";
+            };
+            password.onfocus = function () {
+                tipsWord.innerHTML="";
+            };
+            function checkUsername() {
+                if (regName.test(name.value)){
+                    tipsName.innerHTML="<img src='img/gou.png' width='35' height='25'>";
+                    return true;
+                }
+                else {
+                    tipsName.innerHTML="用户名格式有误";
+                    return false;
+                }
+            }
+
+           function checkPassword() {
+                if (regWord.test(password.value)){
+                    tipsWord.innerHTML="<img src='img/gou.png' width='35' height='25'>";
+                    return true;
+                }
+                else {
+                    tipsWord.innerHTML="密码格式有误";
+                    return false;
+                }
+            }
+
+        }
+    </script>
 </head>
 <body>
 <div class="register">
@@ -109,14 +157,15 @@
     </div>
     <div class="div2">
         <div class="form">
-         <form action="#" method="post">
+         <form action="#" method="get" id="form" >
             <table>
                 <tr>
                     <td class="td_left">
                         <label for="username">用户名</label>
                     </td>
                     <td>
-                        <input type="text" id="username" name="username"placeholder="请输入用户名"> <br/>
+                        <input type="text" id="username" name="username"placeholder="请输入用户名">
+                        <span id="tipsName" class="error"></span>
                     </td>
                 </tr>
                 <tr>
@@ -124,7 +173,8 @@
                         <label for="password">密码</label>
                     </td>
                     <td>
-                        <input type="password" name="password" placeholder="请输入密码" id="password"><br/>
+                        <input type="password" name="password" placeholder="请输入密码" id="password">
+                        <span id="tipsWord" class="error"></span>
                     </td>
                 </tr>
                 <tr>
